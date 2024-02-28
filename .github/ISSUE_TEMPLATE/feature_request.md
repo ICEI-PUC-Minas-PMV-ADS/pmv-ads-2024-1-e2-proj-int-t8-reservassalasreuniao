@@ -31,7 +31,3 @@ assignees: ''
 -   DOC
     
 -   Figma
-    
--   TECHDOCUMENTATION1
-    
--   TECHDOCUMENTATION2
