@@ -1,23 +1,27 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Desenvolvimento de Aplicação Web Front-End/Back-End`
 
-`SEMESTRE`
+`2° Semestre`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Diante dos desafios enfrentados na gestão de salas de reunião em ambientes corporativos, reconhecemos a necessidade de desenvolver um sistema que ofereça soluções abrangentes. Este sistema será projetado para resolver problemas como conflitos de agendamento e falta de visibilidade dos compromissos existentes. Ao fornecer uma visão clara dos agendamentos das salas e integrar-se aos calendários dos funcionários, nosso sistema simplificará o processo de agendamento e promoverá uma gestão mais eficiente e colaborativa das reuniões corporativas.
+
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Leandro Matsui
+* Thais Bertini do Amaral
+* Robert Luiz de S. Magnani
+* Brendo William Rodrigues 
+* Lucas Quintanilha Lacerda
+* Raphael Diego de Oliveira L.
+
 
 ## Orientador
 
-* Nome completo do professor 1
+* Neil Paiva Tizzo
 
 ## Instruções de utilização
 
