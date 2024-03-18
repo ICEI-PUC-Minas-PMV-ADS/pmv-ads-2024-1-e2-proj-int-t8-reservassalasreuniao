@@ -1,4 +1,4 @@
-# TÍTULO DO PROJETO
+# MeetingMate
 
 `Análise e Desenvolvimento de Sistemas`
 
