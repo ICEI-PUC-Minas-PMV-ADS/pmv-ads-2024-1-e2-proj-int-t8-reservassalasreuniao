@@ -8,31 +8,34 @@ DOs desafios cruciais para o projeto foram identificados através de um processo
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
-
-
+- ![Persona1](docs\img\ana silva.PNG)
+- ![Persona2](docs\img\anna de.PNG)
+- ![Persona3](docs\img\enzo.PNG)
+- ![Persona4](docs\img\Mauricio duarte.PNG)
+- ![Persona5](docs\img\lineu.PNG)
+- ![Persona6](docs\img\joao carvalho.PNG)
 
 ## Histórias de Usuários
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
-
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
-
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
+|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE`                                     |PARA ... `MOTIVO/VALOR`                 |
+|--------------------|------------------------------------------------------------------------|----------------------------------------|
+|Ana Silva           | Integração dos calendários individuais dos funcionários.               | Evitar conflitos no agendamento de reuniões.               |
+|Mauricio Duarte     | Visualizar rapidamente a disponibilidade de todas as salas de reunião. | facilitando a escolha da sala mais adequada para o evento. |
+|João Carvalho       | Sistema de notificações e alertas para lembrar os participantes sobre suas reuniões agendadas.  | alertar sobre possíveis conflitos de horário. |
+|Anna de Lucca       | Capacidade de agendar reuniões recorrentes, como reuniões semanais ou mensais. | Para agilidade no gerenciamento de reuniões com o time. |
+|Lineu Silva         | Relatórios sobre a utilização das salas de reunião ao longo do tempo.  | Permitindo uma melhor gestão dos recursos. |
+|Mauricio Duarte     | Gerenciamento de salas de reunião por níveis de perfil                 | Que diferentes níveis de perfil tenham diferentes permissões e acessos. |
+|Ana Silva           | Poder visualizar as reuniões marcadas em cada sala de reunião.         | Para não ter conflito de reuniões já marcadas. | 
+|Lineu Silva         | Facilitar o agendamento de reuniões.                                   | Melhorar as tarefas rotineiras.
+|Anna de Lucca       | Deixar planejado as reuniões de um mês inteiro.                        | Para poder se organizar com antecedência. |
+|João Carvalho       | Realizar 1:1 com todos membros da sua equipe, evitando marcar em horários já preenchidos. | Mecanismo que evite agendamentos durante o mesmo horário. |
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
+O escopo funcional do projeto é definido por meio dos requisitos funcionais que descrevem as possibilidades interação dos usuários, bem como os requisitos não funcionais que descrevem os aspectos que o sistema deverá apresentar de maneira geral. Estes requisitos são apresentados a seguir.
+
 
 ### Requisitos Funcionais
 
@@ -73,15 +76,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+|RE-01| O projeto deverá ser entregue no final do semestre letivo, não podendo extrapolar a data de 23/06/2024. |
+|RE-02| As tecnologias que serão utilizadas na aplicação serão: C# para desenvolver o backend que gerencia as reservas, MySQL para armazenar os dados das salas e reservas. JavaScript, CSS, HTML e Bootstrap para a interface do usuário. |
+|RE-03| A aplicação deverá estar funcionando no servidor da microsoft. |
 
 ## Diagrama de Casos de Uso
 
