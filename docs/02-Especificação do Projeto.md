@@ -2,25 +2,15 @@
 
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
+DOs desafios cruciais para o projeto foram identificados através de um processo de imersão, envolvendo observação e entrevistas com os usuários em seu contexto natural. Essas informações foram sintetizadas em personas e histórias de usuário, proporcionando uma compreensão precisa das necessidades e dores dos usuários. Essa abordagem orientou a construção de um sistema mais eficaz e centrado no usuário.
 
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+
 
 ## Personas
 
 Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
 
 ## Histórias de Usuários
 
@@ -48,30 +38,34 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| A aplicação deve permitir que o usuário gerencie suas tarefas | ALTA | 
-|RF-002| A aplicação deve emitir um relatório de tarefas realizadas no mês   | MÉDIA |
+|RF-001| A aplicação deve permitir que o usuário realize o login | ALTA | 
+|RF-002| A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum)   | ALTA |
+|RF-003| A aplicação deve permitir que o usuário "administrador" adicione novos usuários   | ALTA |
+|RF-004| A aplicação deve permitir que o usuário "administrador" delete usuários   | ALTA |
+|RF-005| A aplicação deve permitir que o usuário "administrador" atualize usuários   | ALTA |
+|RF-006| A aplicação deve permitir que o usuário "administrador" liste os usuários   | ALTA |
+|RF-007| A aplicação deve permitir que o usuário "administrador" cadastre salas de reuniões   | ALTA |
+|RF-008| A aplicação deve permitir que todos os usuários possam reversar uma sala de reunião   | ALTA |
+|RF-009| A aplicação não deve permitir que um usuário reserve uma sala em um horário já ocupado   | ALTA |
+|RF-010| A aplicação deve permitir que o usuário "administrador" emita relatórios do sistema   | ALTA |
+|RF-011| A aplicação deve possuir um relatório de utilização da sala que deve informar a sala e quantidade de horas reservadas   | ALTA |
+|RF-012| A aplicação deve possuir um relatório de utilização dos usuários que deve informar o usuário e quantidade de horas reservadas   | MÉDIA |
+|RF-013| A aplicação permitir que o usuário cancele sua reserva   | MÉDIA |
+|RF-014| A aplicação deve permitir que o usuário "administrador" delete salas de reuniões   | BAIXA |
+|RF-015| A aplicação deve permitir que o usuário "administrador" atualize salas de reuniões   | BAIXA |
+|RF-016| A aplicação deve permitir que o usuário "administrador" liste as salas de reuniões   | BAIXA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| A aplicação deve ser responsiva | MÉDIA | 
-|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| A aplicação deve ser responsiva | ALTA | 
+|RNF-002| A aplicação deve ser acessada através de um navegador de internet |  ALTA | 
+|RNF-003| A aplicação deve processar requisições do usuário em no máximo 3s |  MÉDIA | 
+|RNF-004| A aplicação deve compatível com os principais navegadores de internet |  MÉDIA | 
+|RNF-005| A aplicação deve compatível com os principais navegadores de internet |  BAIXA | 
+|RNF-006| A aplicação deve ser segura permitindo apenas a utilização se senhas "FORTES" |  BAIXA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
