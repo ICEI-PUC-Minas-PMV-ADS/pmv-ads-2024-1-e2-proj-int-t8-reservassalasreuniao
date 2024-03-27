@@ -26,9 +26,9 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |João Carvalho       | Sistema de notificações e alertas para lembrar os participantes sobre suas reuniões agendadas.  | alertar sobre possíveis conflitos de horário. |
 |Anna de Lucca       | Capacidade de agendar reuniões recorrentes, como reuniões semanais ou mensais. | Para agilidade no gerenciamento de reuniões com o time. |
 |Lineu Silva         | Relatórios sobre a utilização das salas de reunião ao longo do tempo.  | Permitindo uma melhor gestão dos recursos. |
-|Mauricio Duarte     | Gerenciamento de salas de reunião por níveis de perfil                 | Que diferentes níveis de perfil tenham diferentes permissões e acessos. |
+|Mauricio Duarte     | Gerenciamento de salas de reunião por níveis de perfil                 | onde diferentes níveis de perfil tenham diferentes permissões e acessos. |
 |Ana Silva           | Poder visualizar as reuniões marcadas em cada sala de reunião.         | Para não ter conflito de reuniões já marcadas. | 
-|Lineu Silva         | Facilitar o agendamento de reuniões.                                   | Melhorar as tarefas rotineiras.
+|Lineu Silva         | Facilitar o agendamento de reuniões.                                   | Melhorar as tarefas rotineiras e ter dados sob re performance.
 |Anna de Lucca       | Deixar planejado as reuniões de um mês inteiro.                        | Para poder se organizar com antecedência. |
 |João Carvalho       | Realizar 1:1 com todos membros da sua equipe, evitando marcar em horários já preenchidos. | Mecanismo que evite agendamentos durante o mesmo horário. |
 
@@ -57,6 +57,9 @@ O escopo funcional do projeto é definido por meio dos requisitos funcionais que
 |RF-014| A aplicação deve permitir que o usuário "administrador" delete salas de reuniões   | BAIXA |
 |RF-015| A aplicação deve permitir que o usuário "administrador" atualize salas de reuniões   | BAIXA |
 |RF-016| A aplicação deve permitir que o usuário "administrador" liste as salas de reuniões   | BAIXA |
+|RF-017| A aplicação deve permitir que os usuários consigam acessar os perfis dos colaboradores, podendo ver seus calendários   | ALTA |
+
+
 
 ### Requisitos não Funcionais
 
