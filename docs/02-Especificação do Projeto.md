@@ -8,12 +8,13 @@ DOs desafios cruciais para o projeto foram identificados através de um processo
 
 ## Personas
 
-- <img src="docs\img\ana silva.PNG"/>
-- ![Persona2]D:\TI E DESIGN\Repositorio\pucminss 2 sem\pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao\docs\img\anna de.PNG)
-- ![Persona3](docs\img\enzo.PNG)
-- ![Persona4](docs\img\Mauricio duarte.PNG)
-- ![Persona5](docs\img\lineu.PNG)
-- ![Persona6](docs\img\joao carvalho.PNG)
+- <img src="docs\ana silva.PNG"/>
+- <img src="docs\anna de.PNG"/>
+- <img src="docs\enzo.PNG"/>
+- <img src="docs\horacio.PNG"/>
+- <img src="docs\joao carvalho.PNG"/>
+- <img src="docs\lineu.PNG"/>
+- <img src="docs\Mauricio duarte.PNG"/>
 
 ## Histórias de Usuários
 
