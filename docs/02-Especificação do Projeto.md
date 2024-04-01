@@ -8,12 +8,13 @@ DOs desafios cruciais para o projeto foram identificados através de um processo
 
 ## Personas
 
-- ![Persona1](docs\img\ana silva.PNG)
-- ![Persona2](docs\img\anna de.PNG)
-- ![Persona3](docs\img\enzo.PNG)
-- ![Persona4](docs\img\Mauricio duarte.PNG)
-- ![Persona5](docs\img\lineu.PNG)
-- ![Persona6](docs\img\joao carvalho.PNG)
+<img src="ana silva.PNG"/>
+<img src="anna de.PNG"/>
+<img src="enzo.PNG"/>
+<img src="horacio.PNG"/>
+<img src="joao carvalho.PNG"/>
+<img src="lineu.PNG"/>
+<img src="Mauricio duarte.PNG"/>
 
 ## Histórias de Usuários
 
@@ -26,7 +27,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |João Carvalho       | Sistema de notificações e alertas para lembrar os participantes sobre suas reuniões agendadas.  | alertar sobre possíveis conflitos de horário. |
 |Anna de Lucca       | Capacidade de agendar reuniões recorrentes, como reuniões semanais ou mensais. | Para agilidade no gerenciamento de reuniões com o time. |
 |Lineu Silva         | Relatórios sobre a utilização das salas de reunião ao longo do tempo.  | Permitindo uma melhor gestão dos recursos. |
-|Mauricio Duarte     | Gerenciamento de salas de reunião por níveis de perfil                 | Que diferentes níveis de perfil tenham diferentes permissões e acessos. |
+|Horacio Fontes | Gerenciamento de salas de reunião por níveis de perfil                 | onde diferentes níveis de perfil tenham diferentes permissões e acessos. |
 |Ana Silva           | Poder visualizar as reuniões marcadas em cada sala de reunião.         | Para não ter conflito de reuniões já marcadas. | 
 |Lineu Silva         | Facilitar o agendamento de reuniões.                                   | Melhorar as tarefas rotineiras.
 |Anna de Lucca       | Deixar planejado as reuniões de um mês inteiro.                        | Para poder se organizar com antecedência. |
