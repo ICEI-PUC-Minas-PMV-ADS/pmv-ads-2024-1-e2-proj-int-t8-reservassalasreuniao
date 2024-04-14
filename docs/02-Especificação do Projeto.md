@@ -81,6 +81,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |RE-02| As tecnologias que serão utilizadas na aplicação serão: C# para desenvolver o backend que gerencia as reservas, MySQL para armazenar os dados das salas e reservas. JavaScript, CSS, HTML e Bootstrap para a interface do usuário. |
 |RE-03| A aplicação deverá estar funcionando no servidor da microsoft. |
 
+
 ## Diagrama de Casos de Uso
 
 <img src="./img/UML_caso_uso.png" alt="Diagrama de Casos de Uso." />
