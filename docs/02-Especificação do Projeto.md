@@ -8,13 +8,13 @@ DOs desafios cruciais para o projeto foram identificados através de um processo
 
 ## Personas
 
-<img src="ana silva.PNG"/>
-<img src="anna de.PNG"/>
-<img src="enzo.PNG"/>
-<img src="horacio.PNG"/>
-<img src="joao carvalho.PNG"/>
-<img src="lineu.PNG"/>
-<img src="Mauricio duarte.PNG"/>
+<img src="img/ana silva.PNG"/>
+<img src="img/anna de.PNG"/>
+<img src="img/enzo.PNG"/>
+<img src="img/horacio.PNG"/>
+<img src="img/joao carvalho.PNG"/>
+<img src="img/lineu.PNG"/>
+<img src="img/Mauricio duarte.PNG"/>
 
 ## Histórias de Usuários
 
