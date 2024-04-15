@@ -32,144 +32,61 @@ Por exemplo:
 
 
 
-ID do Caso de Teste 
-
-Descrição do Teste 
-
-Objetivo do Teste 
-
-Passos para Execução 
-
-Critério de Êxito 
-
-Requisito Associado 
-
-Descrição do Requisito 
-
-1.1 
-
-Login com credenciais válidas 
-
-Verificar se o sistema permite o acesso com credenciais corretas 
-
-1. Abrir aplicação<br>2. Inserir usuário e senha válidos<br>3. Clicar em 'Entrar' 
-
-O usuário é logado no sistema e a tela principal é exibida 
-
-RF-001 
-
-A aplicação deve permitir que o usuário realize o login 
-
-1.2 
-
-Login com credenciais inválidas 
-
-Testar a segurança do sistema em relação a acessos não autorizados 
-
-1. Abrir aplicação<br>2. Inserir usuário e senha inválidos<br>3. Clicar em 'Entrar' 
-
-O sistema mostra uma mensagem de erro e não permite o acesso 
-
-RF-001 
-
-A aplicação deve permitir que o usuário realize o login 
-
-1.3 
-
-Login com campos vazios 
-
-Verificar se o sistema trata entradas vazias corretamente 
-
-1. Abrir aplicação<br>2. Deixar campos de usuário e senha em branco<br>3. Clicar em 'Entrar' 
-
-O sistema mostra uma mensagem de erro solicitando preenchimento dos campos 
-
-RF-001 
-
-A aplicação deve permitir que o usuário realize o login 
-
-2.1 
-
-Criar usuário administrador 
-
-Assegurar que o sistema permite criar um usuário com privilégios administrativos 
-
-1. Logar como administrador<br>2. Acessar a seção de gestão de usuários<br>3. Criar um novo usuário com perfil de administrador 
-
-Um novo usuário administrador é criado com sucesso no sistema 
-
-RF-002, RF-003 
-
-A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários 
-
-2.2 
-
-Criar usuário comum 
-
-Confirmar que o sistema pode criar usuários com perfis comuns 
-
-1. Logar como administrador<br>2. Acessar a seção de gestão de usuários<br>3. Criar um novo usuário com perfil comum 
-
-Um novo usuário comum é adicionado ao sistema 
-
-RF-002, RF-003 
-
-A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários 
-
-4.1 
-
-Reservar sala para data e horário específicos 
-
-Verificar se o sistema permite a reserva de salas corretamente 
-
-1. Logar como usuário<br>2. Acessar a seção de reservas<br>3. Escolher sala, data e horário<br>4. Confirmar a reserva 
-
-A sala é reservada para o usuário no horário especificado sem conflitos 
-
-RF-008, RF-009 
-
-A aplicação deve permitir que todos os usuários possam reservar uma sala de reunião no dia, semana ou mês e não deve permitir reserva em horário já ocupado 
-
-4.2 
-
-Tentativa de reserva em horário ocupado 
-
-Testar a gestão de conflitos de reserva no sistema 
-
-1. Logar como usuário<br>2. Tentar reservar uma sala já ocupada no mesmo horário 
-
-O sistema impede a reserva e alerta sobre o conflito de horário 
-
-RF-009 
-
-A aplicação não deve permitir que um usuário reserve uma sala em um horário já ocupado 
-
-5.1 
-
-Emitir relatório do sistema 
-
-Verificar se os relatórios do sistema estão sendo gerados corretamente 
-
-1. Logar como administrador<br>2. Acessar a seção de relatórios<br>3. Solicitar um relatório geral 
-
-O sistema gera e exibe o relatório solicitado 
-
-RF-010, RF-011, RF-012 
-
-A aplicação deve permitir que o usuário "administrador" emita relatórios do sistema, e deve possuir relatórios de utilização da sala e dos usuários 
-
-6.1 
-
-Cancelar reserva 
-
-Confirmar se o usuário pode cancelar uma reserva existente 
-
-1. Logar como usuário<br>2. Acessar suas reservas<br>3. Selecionar uma reserva e cancelar 
-
-A reserva é cancelada com sucesso e não aparece mais nas reservas ativas 
-
-RF-013 
-
-A aplicação permite que o usuário cancele suas reservas 
-
- teste
+# Documentação do Plano de Testes
+
+## Casos de Teste
+
+| **Caso de Teste** | **CT-01 – Login com credenciais válidas** |
+|:---:|:---:|
+| **Requisito Associado** | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| **Objetivo do Teste** | Verificar se o sistema permite o acesso com credenciais corretas |
+| **Passos** | 1. Abrir aplicação<br>2. Inserir usuário e senha válidos<br>3. Clicar em 'Entrar' |
+| **Critério de Êxito** | O usuário é logado no sistema e a tela principal é exibida |
+|   |   |
+| **Caso de Teste** | **CT-02 – Login com credenciais inválidas** |
+| **Requisito Associado** | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| **Objetivo do Teste** | Testar a segurança do sistema em relação a acessos não autorizados |
+| **Passos** | 1. Abrir aplicação<br>2. Inserir usuário e senha inválidos<br>3. Clicar em 'Entrar' |
+| **Critério de Êxito** | O sistema mostra uma mensagem de erro e não permite o acesso |
+|   |   |
+| **Caso de Teste** | **CT-03 – Login com campos vazios** |
+| **Requisito Associado** | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| **Objetivo do Teste** | Verificar se o sistema trata entradas vazias corretamente |
+| **Passos** | 1. Abrir aplicação<br>2. Deixar campos de usuário e senha em branco<br>3. Clicar em 'Entrar' |
+| **Critério de Êxito** | O sistema mostra uma mensagem de erro solicitando preenchimento dos campos |
+|   |   |
+| **Caso de Teste** | **CT-04 – Criar usuário administrador** |
+| **Requisito Associado** | RF-002, RF-003 - A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários |
+| **Objetivo do Teste** | Assegurar que o sistema permite criar um usuário com privilégios administrativos |
+| **Passos** | 1. Logar como administrador<br>2. Acessar a seção de gestão de usuários<br>3. Criar um novo usuário com perfil de administrador |
+| **Critério de Êxito** | Um novo usuário administrador é criado com sucesso no sistema |
+|   |   |
+| **Caso de Teste** | **CT-05 – Criar usuário comum** |
+| **Requisito Associado** | RF-002, RF-003 - A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários |
+| **Objetivo do Teste** | Confirmar que o sistema pode criar usuários com perfis comuns |
+| **Passos** | 1. Logar como administrador<br>2. Acessar a seção de gestão de usuários<br>3. Criar um novo usuário com perfil comum |
+| **Critério de Êxito** | Um novo usuário comum é adicionado ao sistema |
+|   |   |
+| **Caso de Teste** | **CT-06 – Reservar sala para data e horário específicos** |
+| **Requisito Associado** | RF-008, RF-009 - A aplicação deve permitir que todos os usuários possam reservar uma sala de reunião no dia, semana ou mês e não deve permitir reserva em horário já ocupado |
+| **Objetivo do Teste** | Verificar se o sistema permite a reserva de salas corretamente |
+| **Passos** | 1. Logar como usuário<br>2. Acessar a seção de reservas<br>3. Escolher sala, data e horário<br>4. Confirmar a reserva |
+| **Critério de Êxito** | A sala é reservada para o usuário no horário especificado sem conflitos |
+|   |   |
+| **Caso de Teste** | **CT-07 – Tentativa de reserva em horário ocupado** |
+| **Requisito Associado** | RF-009 - A aplicação não deve permitir que um usuário reserve uma sala em um horário já ocupado |
+| **Objetivo do Teste** | Testar a gestão de conflitos de reserva no sistema |
+| **Passos** | 1. Logar como usuário<br>2. Tentar reservar uma sala já ocupada no mesmo horário |
+| **Critério de Êxito** | O sistema impede a reserva e alerta sobre o conflito de horário |
+|   |   |
+| **Caso de Teste** | **CT-08 – Emitir relatório do sistema** |
+| **Requisito Associado** | RF-010, RF-011, RF-012 - A aplicação deve permitir que o usuário "administrador" emita relatórios do sistema, e deve possuir relatórios de utilização da sala e dos usuários |
+| **Objetivo do Teste** | Verificar se os relatórios do sistema estão sendo gerados corretamente |
+| **Passos** | 1. Logar como administrador<br>2. Acessar a seção de relatórios<br>3. Solicitar um relatório geral |
+| **Critério de Êxito** | O sistema gera e exibe o relatório solicitado |
+|   |   |
+| **Caso de Teste** | **CT-09 – Cancelar reserva** |
+| **Requisito Associado** | RF-013 - A aplicação permite que o usuário cancele suas reservas |
+| **Objetivo do Teste** | Confirmar se o usuário pode cancelar uma reserva existente |
+| **Passos** | 1. Logar como usuário<br>2. Acessar suas reservas<br>3. Selecionar uma reserva e cancelar |
+| **Critério de Êxito** | A reserva é cancelada com sucesso e não aparece mais nas reservas ativas |
