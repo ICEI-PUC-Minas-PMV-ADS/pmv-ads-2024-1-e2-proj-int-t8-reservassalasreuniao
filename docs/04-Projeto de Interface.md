@@ -5,32 +5,54 @@
 
 Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
 
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
-
 ## Diagrama de Fluxo
 
 O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
+Para esse projeto foram desenvolvidos diversos diagramas de fluxos específicos para cada Requisito funcional, visando a melhor leitura, validação e implementação.
 
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
+Os diagrams de fluxo podem ser acessos a partir do projeto do FIgJam: [Link de acesso](https://www.figma.com/file/9qTTg4WiJrPy7AhvAXZ88R/Untitled?type=whiteboard&node-id=0%3A1&t=pwMIwF4H7h6ENy7i-1)
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
+<figure> 
+  <img src="./img/buscar_sala_fluxo.png">
+    <figcaption>Figura 1 - Buscar salas disponíveis para reserva</figcaption>
+</figure> 
 
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+<figure> 
+  <img src="./img/reservar_sala_fluxo.png">
+    <figcaption>Figura 2 - Reservar uma sala</figcaption>
+</figure> 
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+Wireframes apresentam de forma simplificada o design da interface e o relacionamento entre suas páginas, permitindo evolução da proposta da solução. Neste projeto, os utilizaremos para apoiar a validação dos requisitos e efetuar mudanças dos mesmos, caso seja necessário, para menor impacto na codificação da aplicação.
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+
+Para esse projeto foram desenvolvidos dois wireframes, uma versão web e outra mobile, visto que um dos requisitos da aplicação é sua responsividade.
+
+O wireframe pode ser acessado a partir do projeto do figma: [Link de acesso](https://www.figma.com/file/UqTVVayDzbH1Ix1MEd0Iw8/MeetingMate?type=design&node-id=0%3A1&mode=design&t=wV5rpgEiSKiy0fvk-1)
+
+<figure> 
+  <img src="./img/wireframe.png">
+    <figcaption>Figura 3 - Wireframe Modal Reserva</figcaption>
+</figure> 
+
+
+## Protótipo interativo
+
+Os protótipos interativos possuem um papel fundamental no processo de desenvolvimento de software, permitindo validar a navegabilidade e usabilidade de uma aplicação de forma eficiente e econômica. Eles representam uma simulação dinâmica do comportamento de um sistema que ainda está em fase de desenvolvimento, permitindo que os designers e desenvolvedores testem diversas interações e fluxos de usuário antes da implementação final
+
+Para esse projeto foram desenvolvidos dois protótipos, uma versão web e outra mobile, visto que um dos requisitos da aplicação é sua responsividade.
+
+
+O protótipo pode ser acessado e executado a partir do projeto do figma: [Link de acesso](https://www.figma.com/file/UqTVVayDzbH1Ix1MEd0Iw8/MeetingMate?type=design&node-id=0%3A1&mode=design&t=wV5rpgEiSKiy0fvk-1)
+
+<figure> 
+  <img src="./img/prototipo_desktop.png">
+    <figcaption>Figura 4 - Protótipo Desktop</figcaption>
+</figure> 
+
+<figure> 
+  <img src="./img/prototipo_mobile.png">
+    <figcaption>Figura 5 - Protótipo Mobile</figcaption>
+</figure> 
