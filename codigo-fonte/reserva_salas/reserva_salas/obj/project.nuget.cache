@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "u5G6jIgiLA6x9/3uiWPLdhxjNX+9jpfycwewkUa2z53vOVRjeXL7JUZYU8UeI+9JFVLevAE2Am6btaiaLFYubQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rober\\source\\repos\\pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao\\codigo-fonte\\reserva_salas\\reserva_salas\\reserva_salas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rober\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512"
+  ],
+  "logs": []
+}
