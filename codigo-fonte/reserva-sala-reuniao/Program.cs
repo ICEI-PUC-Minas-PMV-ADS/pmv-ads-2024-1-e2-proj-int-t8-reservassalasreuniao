@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using reserva_sala_reuniao.Models;
+using reserva_sala_reuniao.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,11 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddSession(); // Para permitir o uso de sessões
+
 
 var app = builder.Build();
 
@@ -27,9 +33,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();// Iniciar sessão
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
