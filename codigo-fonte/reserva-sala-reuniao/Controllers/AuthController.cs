@@ -23,7 +23,7 @@ namespace reserva_sala_reuniao.Servicos.Controllers
             return View("Login");
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public IActionResult Login(LoginRequest request)
         {
             var user = _authService.Authenticate(request.Email, request.Password);

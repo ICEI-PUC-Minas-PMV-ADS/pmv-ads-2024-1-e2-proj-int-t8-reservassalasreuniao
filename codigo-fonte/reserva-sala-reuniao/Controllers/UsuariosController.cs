@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
 using System.Security.Cryptography;
+>>>>>>> develop
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using reserva_sala_reuniao.Models;
+using reserva_sala_reuniao.Functions;
 
 namespace reserva_sala_reuniao.Controllers
 {
@@ -64,7 +68,7 @@ namespace reserva_sala_reuniao.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.Senha = HashPassword(usuario.Senha);
+                usuario.Senha = Utility.HashPassword(usuario.Senha);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,6 +77,8 @@ namespace reserva_sala_reuniao.Controllers
             ViewData["SetorId"] = new SelectList(_context.Setor, "Id", "Nome", usuario.SetorId);
             return View(usuario);
         }
+
+
 
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(long? id)

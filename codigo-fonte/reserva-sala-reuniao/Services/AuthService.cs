@@ -1,6 +1,7 @@
 ﻿using reserva_sala_reuniao.Models;
 using System.Security.Cryptography;
 using System.Text;
+using reserva_sala_reuniao.Functions;
 
 namespace reserva_sala_reuniao.Services
 {
@@ -30,20 +31,6 @@ namespace reserva_sala_reuniao.Services
         }
 
         /// <summary>
-        /// Gera um hash SHA256 para a senha fornecida.
-        /// </summary>
-        /// <param name="password">Senha a ser hashada</param>
-        /// <returns>String com o hash da senha</returns>
-        public string HashPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashedBytes).Replace("-", String.Empty).ToLowerInvariant();
-            }
-        }
-
-        /// <summary>
         /// Verifica se a senha fornecida corresponde ao hash da senha armazenada.
         /// </summary>
         /// <param name="enteredPassword">Senha fornecida pelo usuário</param>
@@ -51,7 +38,7 @@ namespace reserva_sala_reuniao.Services
         /// <returns>True se a senha corresponder ao hash, false caso contrário</returns>
         public bool VerifyPassword(string enteredPassword, string storedHash)
         {
-            var hashOfEnteredPassword = HashPassword(enteredPassword);
+            var hashOfEnteredPassword = Utility.HashPassword(enteredPassword);
             return hashOfEnteredPassword == storedHash;
         }
     }
