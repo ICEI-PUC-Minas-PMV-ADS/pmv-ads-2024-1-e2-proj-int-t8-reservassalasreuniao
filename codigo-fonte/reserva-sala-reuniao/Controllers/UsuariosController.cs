@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -62,6 +64,7 @@ namespace reserva_sala_reuniao.Controllers
         {
             if (ModelState.IsValid)
             {
+                usuario.Senha = HashPassword(usuario.Senha);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -164,6 +167,24 @@ namespace reserva_sala_reuniao.Controllers
         private bool UsuarioExists(long id)
         {
             return _context.Usuario.Any(e => e.Id == id);
+
         }
+
+        public string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", String.Empty).ToLowerInvariant();
+
+            }
+
+        }
+
+
+
     }
+  
+
+
 }
