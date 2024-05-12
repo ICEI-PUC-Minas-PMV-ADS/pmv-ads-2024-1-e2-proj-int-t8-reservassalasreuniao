@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
+using System.Security.Cryptography;
+>>>>>>> develop
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -169,6 +173,24 @@ namespace reserva_sala_reuniao.Controllers
         private bool UsuarioExists(long id)
         {
             return _context.Usuario.Any(e => e.Id == id);
+
         }
+
+        public string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", String.Empty).ToLowerInvariant();
+
+            }
+
+        }
+
+
+
     }
+  
+
+
 }
