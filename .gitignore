@@ -482,3 +482,7 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/codigo-fonte/reserva_salas/reserva_salas/Properties
+/.gitignore
+/.gitignore
+/.gitignore
