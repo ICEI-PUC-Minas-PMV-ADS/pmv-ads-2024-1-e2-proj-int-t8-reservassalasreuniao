@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisão da Tela</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilo adicional para o layout */
+    body, html {
+      height: 100%;
+    }
+    .container-fluid {
+      height: 100%;
+    }
+    .form-container {
+      background-color: #f8f9fa; /* Cor de fundo do formulário */
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .logo-container {
+      background-color: #579ee6; /* Cor de fundo do contêiner da logo */
+      padding: 20px;
+      height: 100%; /* Para cobrir toda a altura do contêiner pai */
+    }
+    .logo {
+      max-width: 100%; /* Para garantir que a imagem não ultrapasse o contêiner */
+      height: auto; /* Manter a proporção da imagem */
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row h-100">
+      <!-- Container esquerdo para o formulário -->
+      <div class="col-md-6 form-container">
+        <h2 class="text-center">Meeting Mate</h2>
+        <form>
+          <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="text" class="form-control" id="username" placeholder="Digite seu usuário">
+          </div>
+          <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Logar</button>
+        </form>
+      </div>
+      <!-- Container direito para a logo -->
+      <div class="col-md-6 d-flex align-items-center justify-content-center logo-container">
+        <img src="img/Logo_mm.png" alt="Logo da Empresa" class="logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (opcional, caso queira usar funcionalidades do Bootstrap que dependem de JavaScript) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
