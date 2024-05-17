@@ -21,6 +21,7 @@ namespace reserva_sala_reuniao.Models
 
         [Display(Name = "Senha")]
         [Required(ErrorMessage = "Obrigatório informar a senha")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [ForeignKey("Setor")]
@@ -31,9 +32,16 @@ namespace reserva_sala_reuniao.Models
         public long CargoId { get; set; }
         public virtual Cargo Cargo { get; set; }
 
-        // Relacao com outras tabelas
+        public virtual Perfil Perfil { get; set; }
+
+        // Relação com outras tabelas
         public virtual ICollection<Reserva> Reservas { get; set; }
         public virtual ICollection<Admin> Admins { get; set; }
     }
 
+    public enum Perfil
+    {
+        User,
+        Admin
+    }
 }
