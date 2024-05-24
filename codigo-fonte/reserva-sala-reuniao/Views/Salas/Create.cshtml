@@ -4,34 +4,41 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Sala</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="LocalizacaoId" class="control-label"></label>
-                <select asp-for="LocalizacaoId" class ="form-control" asp-items="ViewBag.LocalizacaoId"></select>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h1 class="text-center">Adicionar</h1>
+                    <h4 class="text-center">Sala</h4>
+                    <hr />
+                    <form asp-action="Create">  
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mb-3">
+                            <label asp-for="LocalizacaoId" class="control-label"></label>
+                            <select asp-for="LocalizacaoId" class="form-control" asp-items="ViewBag.LocalizacaoId"></select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="LotacaoMaxima" class="control-label"></label>
+                            <input asp-for="LotacaoMaxima" class="form-control" />
+                            <span asp-validation-for="LotacaoMaxima" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                        <div class="text-center mt-3">
+                            <a asp-action="Index" class="btn btn-link">Voltar</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="LotacaoMaxima" class="control-label"></label>
-                <input asp-for="LotacaoMaxima" class="form-control" />
-                <span asp-validation-for="LotacaoMaxima" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

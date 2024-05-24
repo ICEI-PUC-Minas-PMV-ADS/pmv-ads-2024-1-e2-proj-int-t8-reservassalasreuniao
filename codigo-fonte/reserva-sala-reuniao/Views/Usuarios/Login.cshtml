@@ -1,5 +1,4 @@
-﻿@model reserva_sala_reuniao.Models.LoginRequest
-
+﻿@model reserva_sala_reuniao.Models.Usuario
 @{
     ViewData["Title"] = "Login";
 }
@@ -21,7 +20,7 @@
                         <div class="form-group text-center mt-3">
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
-                        @if (!ViewData.ModelState.IsValid)
+                        @if (ViewBag.Message != null)
                         {
                             <div class="alert alert-danger text-center mt-2">
                                 <span>@ViewBag.Message</span>
@@ -29,11 +28,11 @@
                         }
                     </form>
                 </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <a asp-action="Index">Voltar para a Lista</a>
+                <div class="card-footer text-center">
+                    <a class="btn btn-link" asp-controller="Home" asp-action="Index">Voltar para a Home</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
