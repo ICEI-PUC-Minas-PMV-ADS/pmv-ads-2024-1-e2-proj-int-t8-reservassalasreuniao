@@ -216,6 +216,9 @@ namespace reserva_sala_reuniao.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

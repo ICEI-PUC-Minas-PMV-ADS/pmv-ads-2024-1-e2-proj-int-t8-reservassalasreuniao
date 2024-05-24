@@ -40,6 +40,20 @@ namespace reserva_sala_reuniao.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RelatorioTipo",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RelatorioTipo", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Setor",
                 columns: table => new
                 {
@@ -74,6 +88,26 @@ namespace reserva_sala_reuniao.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Relatorio",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipoRelatorioId = table.Column<long>(type: "bigint", nullable: false),
+                    RelatorioTipoId = table.Column<long>(type: "bigint", nullable: true),
+                    Arquivo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Relatorio", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Relatorio_RelatorioTipo_RelatorioTipoId",
+                        column: x => x.RelatorioTipoId,
+                        principalTable: "RelatorioTipo",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usuario",
                 columns: table => new
                 {
@@ -83,7 +117,8 @@ namespace reserva_sala_reuniao.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SetorId = table.Column<long>(type: "bigint", nullable: false),
-                    CargoId = table.Column<long>(type: "bigint", nullable: false)
+                    CargoId = table.Column<long>(type: "bigint", nullable: false),
+                    Perfil = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -156,6 +191,11 @@ namespace reserva_sala_reuniao.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Relatorio_RelatorioTipoId",
+                table: "Relatorio",
+                column: "RelatorioTipoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reserva_SalaId",
                 table: "Reserva",
                 column: "SalaId");
@@ -188,7 +228,13 @@ namespace reserva_sala_reuniao.Migrations
                 name: "Admin");
 
             migrationBuilder.DropTable(
+                name: "Relatorio");
+
+            migrationBuilder.DropTable(
                 name: "Reserva");
+
+            migrationBuilder.DropTable(
+                name: "RelatorioTipo");
 
             migrationBuilder.DropTable(
                 name: "Sala");

@@ -1,5 +1,4 @@
-﻿@model reserva_sala_reuniao.Models.LoginRequest
-
+﻿@model reserva_sala_reuniao.Models.Usuario
 @{
     ViewData["Title"] = "Login";
 }
@@ -12,27 +11,32 @@
                     <h2>Login</h2>
                 </div>
                 <div class="card-body">
-                    <form asp-controller="Auth" asp-action="Login" method="post">
+                    <form asp-controller="Usuarios" asp-action="Login" method="post">
                         <div class="form-group">
                             <label for="Email">Email:</label>
-                            <input type="text" name="Email" id="Email" class="form-control" value="@Model?.Email" required>
+                            <input type="email" name="Email" id="Email" class="form-control" value="@Model?.Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="Password">Senha:</label>
-                            <input type="password" name="Password" id="Password" class="form-control" required>
+                            <label for="Senha">Senha:</label>
+                            <input type="password" name="Senha" id="Senha" class="form-control" required>
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
-                        @if (!ViewData.ModelState.IsValid)
+                        @if (ViewBag.Message != null)
                         {
                             <div class="alert alert-danger text-center">
-                                <span>Email ou senha incorretos</span>
+                                <span>@ViewBag.Message</span>
                             </div>
                         }
                     </form>
                 </div>
             </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index">Voltar para a Lista</a>
+            </div>
         </div>
     </div>
 </div>
+
