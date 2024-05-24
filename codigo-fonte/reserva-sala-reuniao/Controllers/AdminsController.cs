@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using reserva_sala_reuniao.Models;
 
 namespace reserva_sala_reuniao.Controllers
 {
+    
     public class AdminsController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,6 +21,7 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // GET: Admins
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Admin.Include(a => a.Usuario);

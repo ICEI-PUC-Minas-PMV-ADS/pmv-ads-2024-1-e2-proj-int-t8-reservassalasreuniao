@@ -12,7 +12,7 @@ using reserva_sala_reuniao.Models;
 namespace reserva_sala_reuniao.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240508195156_M01-AddTableCargo")]
+    [Migration("20240516202058_M01-AddTableCargo")]
     partial class M01AddTableCargo
     {
         /// <inheritdoc />
@@ -81,6 +81,50 @@ namespace reserva_sala_reuniao.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Localizacao");
+                });
+
+            modelBuilder.Entity("reserva_sala_reuniao.Models.Relatorio", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Arquivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("RelatorioTipoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TipoRelatorioId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RelatorioTipoId");
+
+                    b.ToTable("Relatorio");
+                });
+
+            modelBuilder.Entity("reserva_sala_reuniao.Models.RelatorioTipo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RelatorioTipo");
                 });
 
             modelBuilder.Entity("reserva_sala_reuniao.Models.Reserva", b =>
@@ -175,6 +219,9 @@ namespace reserva_sala_reuniao.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -200,6 +247,15 @@ namespace reserva_sala_reuniao.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("reserva_sala_reuniao.Models.Relatorio", b =>
+                {
+                    b.HasOne("reserva_sala_reuniao.Models.RelatorioTipo", "RelatorioTipo")
+                        .WithMany()
+                        .HasForeignKey("RelatorioTipoId");
+
+                    b.Navigation("RelatorioTipo");
                 });
 
             modelBuilder.Entity("reserva_sala_reuniao.Models.Reserva", b =>

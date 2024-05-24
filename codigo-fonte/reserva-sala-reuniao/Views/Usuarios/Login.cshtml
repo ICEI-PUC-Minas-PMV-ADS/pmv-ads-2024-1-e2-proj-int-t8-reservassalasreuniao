@@ -3,6 +3,7 @@
     ViewData["Title"] = "Login";
 }
 
+<<<<<<<< HEAD:codigo-fonte/reserva-sala-reuniao/Views/Auth/Login.cshtml
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-4">
@@ -16,13 +17,35 @@
                         <div class="form-floating">
                             <input type="password" class="form-control" name="Senha" id="Senha" placeholder="Password" required>
                             <label for="floatingPassword">Senha</label>
+========
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Usuarios" asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="email" name="Email" id="Email" class="form-control" value="@Model?.Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Senha">Senha:</label>
+                            <input type="password" name="Senha" id="Senha" class="form-control" required>
+>>>>>>>> 3117b99f754e0632c7884638309672ad77e7287c:codigo-fonte/reserva-sala-reuniao/Views/Usuarios/Login.cshtml
                         </div>
                         <div class="form-group text-center mt-3">
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
                         @if (ViewBag.Message != null)
                         {
+<<<<<<<< HEAD:codigo-fonte/reserva-sala-reuniao/Views/Auth/Login.cshtml
                             <div class="alert alert-danger text-center mt-2">
+========
+                            <div class="alert alert-danger text-center">
+>>>>>>>> 3117b99f754e0632c7884638309672ad77e7287c:codigo-fonte/reserva-sala-reuniao/Views/Usuarios/Login.cshtml
                                 <span>@ViewBag.Message</span>
                             </div>
                         }
@@ -30,7 +53,10 @@
                 </div>
                 <div class="card-footer text-center">
                     <a class="btn btn-link" asp-controller="Home" asp-action="Index">Voltar para a Home</a>
-                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index">Voltar para a Lista</a>
             </div>
         </div>
     </div>
