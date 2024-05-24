@@ -4,35 +4,34 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-4">
-            <div class="card mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                    <form asp-controller="Usuarios" asp-action="Login" method="post">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="Email" id="Email" value="@Model?.Email" placeholder="name@example.com" required>
-                            <label for="floatingInput">Email</label>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Auth" asp-action="Login" method="post">
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="text" name="Email" id="Email" class="form-control" value="@Model?.Email" required>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" name="Senha" id="Senha" placeholder="Password" required>
-                            <label for="floatingPassword">Senha</label>
+                        <div class="form-group">
+                            <label for="Password">Senha:</label>
+                            <input type="password" name="Password" id="Password" class="form-control" required>
                         </div>
-                        <div class="form-group text-center mt-3">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
                         @if (!ViewData.ModelState.IsValid)
                         {
-                            <div class="alert alert-danger text-center mt-2">
-                                <span>@ViewBag.Message</span>
+                            <div class="alert alert-danger text-center">
+                                <span>Email ou senha incorretos</span>
                             </div>
                         }
                     </form>
                 </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <a asp-action="Index">Voltar para a Lista</a>
             </div>
         </div>
     </div>

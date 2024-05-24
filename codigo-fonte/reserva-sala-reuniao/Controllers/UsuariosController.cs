@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
+=======
 using System.Security.Cryptography;
+>>>>>>> develop
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;

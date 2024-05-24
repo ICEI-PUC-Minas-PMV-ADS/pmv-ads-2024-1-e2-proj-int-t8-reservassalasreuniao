@@ -8,104 +8,57 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/reserva_sala_reuniao.styles.css" asp-append-version="true" />
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/Home">
-                    <img src="/images/logo_mm.png" alt="Logo" style="height: 55px;">
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Menu
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                                        </li>
-                                    }
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
-                                    </li>
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Cargos" asp-action="Index">Cargos</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Localizacoes" asp-action="Index">Localizacao</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Setores" asp-action="Index">Setores</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Relatorios" asp-action="Index">Relatorios</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="RelatorioTipos" asp-action="Index">Tipos de Relatorios</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        </ul>
-                    }
-                    <ul class="navbar-nav ms-auto">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Login">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg>
-                                </a>
-                            </li>
-                        }
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Menu
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Cargos" asp-action="Index">Cargos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Relatorios" asp-action="Index">Relatórios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
+                    <div class="text-center">
+                        <a href="link_do_seu_destino">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <main role="main" class="flex-fill pb-3">
-        @RenderBody()
-    </main>
-    <footer class="border-top footer text-muted text-center mt-auto">
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-center">
         <div class="container">
             &copy; 2024 - Meeting Mate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Termos de uso</a>
         </div>
