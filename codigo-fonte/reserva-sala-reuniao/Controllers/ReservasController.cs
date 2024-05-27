@@ -50,14 +50,12 @@ namespace reserva_sala_reuniao.Controllers
         // GET: Reservas/Create
         public IActionResult Create()
         {
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id");
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email");
+            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome");
+            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome");
             return View();
         }
 
         // POST: Reservas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Descricao,Data,HorasReservadas,SalaId,UsuarioId")] Reserva reserva)
@@ -68,8 +66,8 @@ namespace reserva_sala_reuniao.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id", reserva.SalaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email", reserva.UsuarioId);
+            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome", reserva.UsuarioId);
             return View(reserva);
         }
 
