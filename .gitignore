@@ -486,3 +486,5 @@ $RECYCLE.BIN/
 /.gitignore
 /.gitignore
 /.gitignore
+*.json
+/.gitignore
