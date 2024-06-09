@@ -1,0 +1,68 @@
+﻿/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box- sizing: border - box;
+}
+
+html, body {
+    height: 100 %;
+    font - family: Arial, sans - serif;
+    background - color: #f8f9fa;
+}
+
+body {
+    display: flex;
+    flex - direction: column;
+    min - height: 100vh;
+}
+
+header {
+    background - color: #343a40;
+    color: #ffffff;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align - items: center;
+    justify - content: center;
+}
+
+.footer {
+    background - color: #343a40;
+    color: #ffffff;
+    padding: 15px 0;
+    text - align: center;
+}
+
+    .footer a {
+    color: #f8f9fa;
+}
+
+        .footer a:hover {
+    color: #e9ecef;
+}
+
+.card {
+    border - radius: 8px;
+    box - shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn - primary {
+    background - color: #0056b3;
+    border: none;
+}
+
+    .btn - primary:hover {
+    background - color: #004085;
+}
+
+.btn - link {
+    color: #0056b3;
+}
+
+    .btn - link:hover {
+    color: #004085;
+}
+
