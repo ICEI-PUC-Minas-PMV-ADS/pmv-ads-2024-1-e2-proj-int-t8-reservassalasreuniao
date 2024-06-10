@@ -6,11 +6,11 @@
 
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-10">
+        <div class="col-md-10 ">
             
-                <div class="card-body">                    
+                                   
                     <div class="mb-3">
-                        <h1 class="">Cargos</h1>
+                    <h1 class="input-group-prepend">Cargos</h1>
                     <a asp-action="Create" class="btn btn-secondary">Adicionar novo cargo</a>
                     
                     <table class="table table-hover">
@@ -18,7 +18,7 @@
                             <tr>
                                 <th>@Html.DisplayNameFor(model => model.Nome)</th>
                                 <th>@Html.DisplayNameFor(model => model.Descricao)</th>
-                                <th class="text-end">Acoes</th>
+                                <th class="text-end">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,7 +37,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>
