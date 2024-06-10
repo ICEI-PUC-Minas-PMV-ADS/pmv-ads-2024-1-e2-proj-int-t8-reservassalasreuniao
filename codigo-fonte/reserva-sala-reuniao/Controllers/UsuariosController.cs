@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
-=======
-using System.Security.Cryptography;
->>>>>>> develop
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using reserva_sala_reuniao.Models;
-using reserva_sala_reuniao.Functions;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace reserva_sala_reuniao.Controllers
 {
@@ -25,10 +23,58 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // GET: Usuarios
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Usuario.Include(u => u.Cargo).Include(u => u.Setor);
-            return View(await appDbContext.ToListAsync());
+            return View(await _context.Usuario.ToListAsync());
+        }
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(Usuario usuario)
+        {
+            var dados = await _context.Usuario.FirstOrDefaultAsync(u => u.Email == usuario.Email);
+
+            if (dados == null || !BCrypt.Net.BCrypt.Verify(usuario.Senha, dados.Senha))
+            {
+                ViewBag.Message = "Email e/ou senha inválidos!";
+                return View();
+            }
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, dados.Email),
+                new Claim(ClaimTypes.NameIdentifier, dados.Id.ToString()),
+                new Claim(ClaimTypes.Name, dados.Nome),
+                new Claim(ClaimTypes.Role, dados.Perfil.ToString())
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(claimsIdentity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Usuarios");
         }
 
         // GET: Usuarios/Details/5
@@ -60,15 +106,13 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // POST: Usuarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,SetorId,CargoId")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,SetorId,CargoId,Perfil")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                usuario.Senha = Utility.HashPassword(usuario.Senha);
+                usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -77,8 +121,6 @@ namespace reserva_sala_reuniao.Controllers
             ViewData["SetorId"] = new SelectList(_context.Setor, "Id", "Nome", usuario.SetorId);
             return View(usuario);
         }
-
-
 
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(long? id)
@@ -99,11 +141,9 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Nome,Email,Senha,SetorId,CargoId")] Usuario usuario)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Nome,Email,Senha,SetorId,CargoId,Perfil")] Usuario usuario)
         {
             if (id != usuario.Id)
             {
@@ -114,6 +154,7 @@ namespace reserva_sala_reuniao.Controllers
             {
                 try
                 {
+                    usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
@@ -173,24 +214,7 @@ namespace reserva_sala_reuniao.Controllers
         private bool UsuarioExists(long id)
         {
             return _context.Usuario.Any(e => e.Id == id);
-
         }
-
-        public string HashPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashedBytes).Replace("-", String.Empty).ToLowerInvariant();
-
-            }
-
-        }
-
-
-
     }
-  
-
-
 }
+

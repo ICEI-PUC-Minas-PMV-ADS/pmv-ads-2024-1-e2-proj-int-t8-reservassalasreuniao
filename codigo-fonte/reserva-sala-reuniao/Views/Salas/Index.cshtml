@@ -4,38 +4,41 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h1 class="text-center">Salas</h1>
+                    <p class="text-center">
+                        <a asp-action="Create" class="btn btn-primary">Adicionar nova sala</a>
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Localizacao)</th>
+                                <th>@Html.DisplayNameFor(model => model.LotacaoMaxima)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Localizacao.Nome)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.LotacaoMaxima)</td>
+                                    <td class="text-end">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Localizacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LotacaoMaxima)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Localizacao.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LotacaoMaxima)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

@@ -1,0 +1,41 @@
+﻿
+
+#calendar {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+
+    #calendar-header h2 {
+        margin: 0;
+    }
+
+#calendar-body {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    #calendar-body th,
+    #calendar-body td {
+        width: 14.28%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    #calendar-body tbody td {
+        cursor: pointer;
+    }
+
+        #calendar-body tbody td:hover {
+            background-color: #f0f0f0;
+        }

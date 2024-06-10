@@ -1,0 +1,40 @@
+﻿@model reserva_sala_reuniao.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-4">
+            <div class="card mt-5 shadow-lg p-3 mb-5 bg-white rounded">               
+                <div class="card-body">
+                    <form asp-controller="Usuarios" asp-action="Login" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" name="Email" id="Email" value="@Model?.Email" placeholder="name@example.com" required>
+                            <label for="floatingInput">Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="Senha" id="Senha" placeholder="Password" required>
+                            <label for="floatingPassword">Senha</label>
+                        </div>
+                        <div class="form-group text-center mt-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-danger text-center mt-2">
+                                <span>@ViewBag.Message</span>
+                            </div>
+                        }
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <img src="~/Images/Logo_mm.png" alt="Logo" style="height: 600px;">
+    <link rel="stylesheet" href="~/css/login.css" />
+</div>

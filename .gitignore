@@ -486,3 +486,7 @@ $RECYCLE.BIN/
 /.gitignore
 /.gitignore
 /.gitignore
+*.json
+/.gitignore
+/codigo-fonte/reserva-sala-reuniao/reserva-sala-reuniao.csproj
+/.gitignore

@@ -1,38 +1,56 @@
-﻿@model reserva_sala_reuniao.Models.Relatorio
+﻿@model reserva_sala_reuniao.Models.ViewModel.GerarRelatorioViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h1 class="text-center">Gerar Relatório</h1>
+                    <hr />
+                    <form asp-action="RegistrosRelatorio">
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label asp-for="DataInicio" class="control-label"></label>
+                                    <input asp-for="DataInicio" class="form-control" />
+                                    <span asp-validation-for="DataInicio" class="text-danger"></span>
+                                </div>
+                                <div class="col">
+                                    <label asp-for="DataFinal" class="control-label"></label>
+                                    <input asp-for="DataFinal" class="form-control" />
+                                    <span asp-validation-for="DataFinal" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
 
-<h4>Relatorio</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="TipoRelatorioId" class="control-label"></label>
-                <input asp-for="TipoRelatorioId" class="form-control" />
-                <span asp-validation-for="TipoRelatorioId" class="text-danger"></span>
+                        <div class="form-group mb-3">
+                            <label class="control-label">Tipo de relatorio</label>
+                            <select asp-for="IdTipo" class="form-select" aria-label="Select Tipo Relatório">
+                                <option selected value="2">Relatório de quantidade de horas por sala </option>
+                                <option value="1">Relatório de quantidade de horas por usuário</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Gerar" class="btn btn-primary">
+                        </div>
+                        <div class="text-center mt-3">
+                            <a asp-action="Index" class="btn btn-link">Voltar</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Arquivo" class="control-label"></label>
-                <input asp-for="Arquivo" class="form-control" />
-                <span asp-validation-for="Arquivo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

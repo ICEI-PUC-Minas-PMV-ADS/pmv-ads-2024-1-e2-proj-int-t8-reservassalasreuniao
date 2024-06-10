@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,20 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // GET: Reservas
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Reserva.Include(r => r.Sala).Include(r => r.Usuario);
+
+            // Busca a reserva mais próxima
+            var reservaMaisProxima = await _context.Reserva
+                .Where(r => r.Data >= DateTime.Now)
+                .OrderBy(r => r.Data)
+                .FirstOrDefaultAsync();
+
+            // Passa a reserva mais próxima para a view usando ViewBag
+            ViewBag.ReservaMaisProxima = reservaMaisProxima;
+
             return View(await appDbContext.ToListAsync());
         }
 
@@ -48,14 +60,12 @@ namespace reserva_sala_reuniao.Controllers
         // GET: Reservas/Create
         public IActionResult Create()
         {
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id");
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email");
+            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome");
+            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome");
             return View();
         }
 
         // POST: Reservas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Descricao,Data,HorasReservadas,SalaId,UsuarioId")] Reserva reserva)
@@ -66,8 +76,8 @@ namespace reserva_sala_reuniao.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id", reserva.SalaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email", reserva.UsuarioId);
+            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -90,8 +100,6 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // POST: Reservas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, [Bind("Id,Descricao,Data,HorasReservadas,SalaId,UsuarioId")] Reserva reserva)
