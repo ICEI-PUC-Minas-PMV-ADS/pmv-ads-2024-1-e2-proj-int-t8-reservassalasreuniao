@@ -1,68 +1,65 @@
-﻿/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box- sizing: border - box;
-}
+﻿document.addEventListener('DOMContentLoaded', () => {
+    const calendarBody = document.querySelector('#calendar-body tbody');
+    const monthYear = document.getElementById('month-year');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
 
-html, body {
-    height: 100 %;
-    font - family: Arial, sans - serif;
-    background - color: #f8f9fa;
-}
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
 
-body {
-    display: flex;
-    flex - direction: column;
-    min - height: 100vh;
-}
+    const months = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
 
-header {
-    background - color: #343a40;
-    color: #ffffff;
-}
+    function generateCalendar(month, year) {
+        calendarBody.innerHTML = '';
+        monthYear.textContent = `${months[month]} ${year}`;
 
-main {
-    flex: 1;
-    display: flex;
-    align - items: center;
-    justify - content: center;
-}
+        const firstDay = new Date(year, month).getDay();
+        const daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-.footer {
-    background - color: #343a40;
-    color: #ffffff;
-    padding: 15px 0;
-    text - align: center;
-}
+        let date = 1;
 
-    .footer a {
-    color: #f8f9fa;
-}
+        for (let i = 0; i < 6; i++) {
+            let row = document.createElement('tr');
 
-        .footer a:hover {
-    color: #e9ecef;
-}
+            for (let j = 0; j < 7; j++) {
+                let cell = document.createElement('td');
+                if (i === 0 && j < firstDay) {
+                    let cellText = document.createTextNode('');
+                    cell.appendChild(cellText);
+                } else if (date > daysInMonth) {
+                    break;
+                } else {
+                    let cellText = document.createTextNode(date);
+                    cell.appendChild(cellText);
+                    date++;
+                }
+                row.appendChild(cell);
+            }
 
-.card {
-    border - radius: 8px;
-    box - shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+            calendarBody.appendChild(row);
+        }
+    }
 
-.btn - primary {
-    background - color: #0056b3;
-    border: none;
-}
+    prevMonthBtn.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentMonth, currentYear);
+    });
 
-    .btn - primary:hover {
-    background - color: #004085;
-}
+    nextMonthBtn.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+    });
 
-.btn - link {
-    color: #0056b3;
-}
-
-    .btn - link:hover {
-    color: #004085;
-}
-
+    generateCalendar(currentMonth, currentYear);
+});

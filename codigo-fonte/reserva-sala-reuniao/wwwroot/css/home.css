@@ -1,9 +1,4 @@
-﻿main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
+﻿
 
 #calendar {
     width: 300px;
@@ -44,62 +39,3 @@
         #calendar-body tbody td:hover {
             background-color: #f0f0f0;
         }
-
-
-Home
-
-@ {
-    ViewData ["Title"] = "Home Page";
-}
-
-
-<head >
-<meta charset="UTF-8" >
-<meta name="viewport" content="width=device-width, initial-scale=1.0" >
-<title > Calendário</title >
-<link rel="stylesheet" href="~/css/home.css" >
-</head >
-<body >
-<div id="calendar" >
-<div id="calendar-header" >
-<button id="prev-month" > &lt;</button >
-<h2 id="month-year" > </h2 >
-<button id="next-month" > &gt;</button >
-</div >
-<table id="calendar-body" >
-<thead >
-<tr >
-<th > Dom</th >
-<th > Seg</th >
-<th > Ter</th >
-<th > Qua</th >
-<th > Qui</th >
-<th > Sex</th >
-<th > Sáb</th >
-</tr >
-</thead >
-<tbody >
-</tbody >
-</table >
-</div >
-<script src="~/js/home.js" > </script >
-</body >
-
-
-<div class="col-md-6" >
-<!-- Container para a próxima agenda -->
-<div class="border rounded p-3 mb-3" >
-<h2 class="text-center" > Próxima Agenda</h2 >
-<!-- Conteúdo da próxima agenda aqui -->
-</div >
-<!-- Container para o atalho para fazer reserva -->
-<div class="border rounded p-3" >
-<h2 class="text-center" > Atalho para Fazer Reserva</h2 >
-<div class="text-center" >
-<a class="navbar-brand" href="/Reservas" >
-<button class="btn btn-primary" > Fazer Reserva</button >
-</div >
-</div >
-</div >
-</div >
-</div >
