@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    var reservaMaisProxima = ViewBag.ReservaMaisProxima as reserva_sala_reuniao.Models.Reserva;
 }
 
 <div class="container h-100">
@@ -9,10 +10,24 @@
         <div class="col-md-10">
             <div class="card shadow-lg p-4 mb-5 bg-white rounded">
                 <div class="card-body">
-                    <h1 class="text-center">Reservar sala</h1>
+                    <h1 class="text-center">Reservar Sala</h1>
+
+                    @if (reservaMaisProxima != null)
+                    {
+                        <div class="card mb-4 align-items-center" style="background-color: #808080; color: #000;">
+                            <h4 class="alert-heading">Próxima Reserva</h4>
+                            <p><strong>Descrição:</strong> @reservaMaisProxima.Descricao</p>
+                            <p><strong>Data:</strong> @reservaMaisProxima.Data</p>
+                            <p><strong>Horas Reservadas:</strong> @reservaMaisProxima.HorasReservadas</p>
+                            <p><strong>Sala:</strong> @reservaMaisProxima.Sala.Id</p>
+                            <p><strong>Usuário:</strong> @reservaMaisProxima.Usuario.Email</p>
+                        </div>
+                    }
+
                     <div class="text-center mb-3">
                         <a asp-action="Create" class="btn btn-primary">Criar nova reserva</a>
                     </div>
+
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -47,4 +62,3 @@
         </div>
     </div>
 </div>
-
