@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using reserva_sala_reuniao.Models;
+using reserva_sala_reuniao.Models.ViewModel;
 
 namespace reserva_sala_reuniao.Controllers
 {
@@ -42,6 +43,53 @@ namespace reserva_sala_reuniao.Controllers
             }
 
             return View(relatorio);
+        }
+
+        // POST: Usuarios/GerarRelatorio
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrosRelatorio(GerarRelatorioViewModel gerarRelatorioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var listaReservas = await _context.Reserva.Where(x => DateTime.Compare(x.Data, gerarRelatorioViewModel.DataFinal) <= 0 &&
+                    DateTime.Compare(x.Data, gerarRelatorioViewModel.DataInicio) >= 0).ToListAsync();
+
+                var listaSalas = await _context.Sala.ToListAsync();
+
+                var listaLocalizacao = await _context.Localizacao.ToListAsync();
+
+                var listaUsuarios = await _context.Usuario.ToListAsync();
+
+                if (gerarRelatorioViewModel.IdTipo == 1)
+                {
+                    return View(from reserva in listaReservas
+                                join usuario in listaUsuarios on reserva.UsuarioId equals usuario.Id into usuarioJoin
+                                from usuario in usuarioJoin.DefaultIfEmpty()
+                                group new { reserva, usuario } by new { reserva.UsuarioId, usuario.Nome } into grp
+                                select new DadosRelatorio
+                                {
+                                    Id = grp.Key.UsuarioId,
+                                    Nome = grp.Key.Nome,
+                                    TotalHoras = grp.Sum(x => x.reserva.HorasReservadas).ToString(),
+                                });
+                }
+
+                return View(from reserva in listaReservas
+                       join sala in listaSalas on reserva.SalaId equals sala.Id into salaJoin
+                       from sala in salaJoin.DefaultIfEmpty()
+                       join localizacao in listaLocalizacao on sala.LocalizacaoId equals localizacao.Id into localizacaoJoin
+                       from localizacao in localizacaoJoin.DefaultIfEmpty()
+                       group new { reserva, localizacao } by new { reserva.SalaId, localizacao.Nome } into grp
+                       select new DadosRelatorio
+                       {
+                           Id = grp.Key.SalaId,
+                           Nome = grp.Key.Nome,
+                           TotalHoras = grp.Sum(x => x.reserva.HorasReservadas).ToString(),
+                       });
+
+            }
+
+            return View(new List<DadosRelatorio>());
         }
 
         // GET: Relatorios/Create
