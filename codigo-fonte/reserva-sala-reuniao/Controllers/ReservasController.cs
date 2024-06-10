@@ -24,6 +24,16 @@ namespace reserva_sala_reuniao.Controllers
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Reserva.Include(r => r.Sala).Include(r => r.Usuario);
+
+            // Busca a reserva mais próxima
+            var reservaMaisProxima = await _context.Reserva
+                .Where(r => r.Data >= DateTime.Now)
+                .OrderBy(r => r.Data)
+                .FirstOrDefaultAsync();
+
+            // Passa a reserva mais próxima para a view usando ViewBag
+            ViewBag.ReservaMaisProxima = reservaMaisProxima;
+
             return View(await appDbContext.ToListAsync());
         }
 
@@ -90,8 +100,6 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // POST: Reservas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, [Bind("Id,Descricao,Data,HorasReservadas,SalaId,UsuarioId")] Reserva reserva)
