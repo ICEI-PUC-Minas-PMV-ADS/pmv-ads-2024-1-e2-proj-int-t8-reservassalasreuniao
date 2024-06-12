@@ -17,7 +17,7 @@ namespace reserva_sala_reuniao.Models
         [Required(ErrorMessage = "Obrigatório informar a data")]
         public DateTime Data { get; set; }
 
-        [Display(Name = "Horario da reserva")]
+        [Display(Name = "Total de horas reservadas")]
         [Required(ErrorMessage = "Obrigatório informar o horario da reserva")]
         public int HorasReservadas { get; set; }
 
