@@ -34,6 +34,12 @@ namespace reserva_sala_reuniao.Controllers
             // Passa a reserva mais próxima para a view usando ViewBag
             ViewBag.ReservaMaisProxima = reservaMaisProxima;
 
+            // Define a mensagem quando não houver reservas futuras
+            if (reservaMaisProxima == null)
+            {
+                ViewBag.MensagemReserva = "Não há reservas futuras.";
+            }
+
             return View(await appDbContext.ToListAsync());
         }
 
