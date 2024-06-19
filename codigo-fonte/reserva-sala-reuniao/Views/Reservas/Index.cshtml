@@ -19,7 +19,7 @@
                             <p><strong>Descrição:</strong> @reservaMaisProxima.Descricao</p>
                             <p><strong>Data:</strong> @reservaMaisProxima.Data</p>
                             <p><strong>Horas Reservadas:</strong> @reservaMaisProxima.HorasReservadas</p>
-                            <p><strong>Sala:</strong> @reservaMaisProxima.Sala.Id</p>
+                            <p><strong>Sala:</strong> @reservaMaisProxima.Sala.Localizacao.Nome</p>
                             <p><strong>Usuário:</strong> @reservaMaisProxima.Usuario.Email</p>
                         </div>
                     }
@@ -41,8 +41,8 @@
                                 <th>@Html.DisplayNameFor(model => model.Descricao)</th>
                                 <th>@Html.DisplayNameFor(model => model.Data)</th>
                                 <th>@Html.DisplayNameFor(model => model.HorasReservadas)</th>
-                                <th>@Html.DisplayNameFor(model => model.Sala)</th>
-                                <th>@Html.DisplayNameFor(model => model.Usuario)</th>
+                                <th>@Html.DisplayNameFor(model => model.Sala.Localizacao.Nome)</th>
+                                <th>@Html.DisplayNameFor(model => model.Usuario.Email)</th>
                                 <th class="text-end">Actions</th>
                             </tr>
                         </thead>
@@ -53,7 +53,7 @@
                                     <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Data)</td>
                                     <td>@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Sala.Id)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Sala.Localizacao.Nome)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
                                     <td class="text-end">
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
