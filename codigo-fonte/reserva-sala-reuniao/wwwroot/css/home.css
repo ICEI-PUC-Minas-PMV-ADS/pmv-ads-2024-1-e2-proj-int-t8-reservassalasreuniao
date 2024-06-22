@@ -44,7 +44,3 @@
         #calendar-body tbody td:hover {
             background-color: #f0f0f0;
         }
-
-.col-md-6 {
-    flex: 0 0 400px; 
-}
