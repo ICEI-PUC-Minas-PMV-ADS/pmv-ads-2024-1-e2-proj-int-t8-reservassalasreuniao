@@ -12,42 +12,42 @@
                     <h3 class="text-center">Tem certeza que deseja remover essa reserva?</h3>                    
                     <hr />
                     <dl class="row">
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Descricao)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Descricao)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Descricao)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Data)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Data)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Data)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.HorasReservadas)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.HorasReservadas)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.HorasReservadas)</div>
                         </dd>
-                        <dt class="col-sm-4">
-                            @Html.DisplayNameFor(model => model.Sala)
+                        <dt class="col-sm-4 text-sm-end">
+                            Sala
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Sala.Id)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Sala.Localizacao.Nome)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Usuario)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Usuario.Email)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Usuario.Email)</div>
                         </dd>
                     </dl>
                     <form asp-action="Delete">
                         <input type="hidden" asp-for="Id" />
                         <div class="text-center">
                             <input type="submit" value="Remover" class="btn btn-danger" />
-                            <a asp-action="Index" class="btn btn-link">Voltar</a>
+                            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
                         </div>
                     </form>
                 </div>
