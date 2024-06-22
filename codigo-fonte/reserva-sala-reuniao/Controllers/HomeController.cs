@@ -1,21 +1,42 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using reserva_sala_reuniao.Models;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace reserva_sala_reuniao.Controllers
 {
     public class HomeController : Controller
     {
-        
+        private readonly AppDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AppDbContext context, ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            // Busca a reserva mais próxima
+            var reservaMaisProxima = await _context.Reserva
+                .Include(r => r.Sala)
+                    .ThenInclude(s => s.Localizacao)
+                .Include(r => r.Usuario)
+                .Where(r => r.Data >= DateTime.Now)
+                .OrderBy(r => r.Data)
+                .FirstOrDefaultAsync();
+
+            // Passa a reserva mais próxima para a view usando ViewBag
+            ViewBag.ReservaMaisProxima = reservaMaisProxima;
+
+            // Define a mensagem quando não houver reservas futuras
+            if (reservaMaisProxima == null)
+            {
+                ViewBag.MensagemReserva = "Não há reservas futuras.";
+            }
+
             return View();
         }
 
