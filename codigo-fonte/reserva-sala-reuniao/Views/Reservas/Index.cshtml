@@ -43,7 +43,7 @@
                                 <th>@Html.DisplayNameFor(model => model.HorasReservadas)</th>
                                 <th>@Html.DisplayNameFor(model => model.Sala.Localizacao.Nome)</th>
                                 <th>@Html.DisplayNameFor(model => model.Usuario.Email)</th>
-                                <th class="text-end">Actions</th>
+                                <th class="text-end">Opções</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,10 +55,10 @@
                                     <td>@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Sala.Localizacao.Nome)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
-                                    <td class="text-end">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
+                                    <td class="text-end col-md-4">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">Exibir</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Apagar</a>
                                     </td>
                                 </tr>
                             }
