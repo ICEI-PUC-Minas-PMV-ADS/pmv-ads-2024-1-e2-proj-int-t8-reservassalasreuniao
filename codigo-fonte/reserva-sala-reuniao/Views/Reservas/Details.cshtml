@@ -9,43 +9,43 @@
         <div class="col-md-6">
             <div class="card shadow-lg p-4 mb-5 bg-white rounded">
                 <div class="card-body">
-                    <h1 class="text-center">Exibir reserva</h1>                    
+                    <h1 class="text-center">Exibir reserva</h1>
                     <hr />
                     <dl class="row">
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Descricao)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Descricao)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Descricao)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Data)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Data)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Data)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.HorasReservadas)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.HorasReservadas)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.HorasReservadas)</div>
                         </dd>
-                        <dt class="col-sm-4">
-                            @Html.DisplayNameFor(model => model.Sala)
+                        <dt class="col-sm-4 text-sm-end">
+                            Sala
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Sala.Id)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Sala.Localizacao.Nome)</div>
                         </dd>
-                        <dt class="col-sm-4">
+                        <dt class="col-sm-4 text-sm-end">
                             @Html.DisplayNameFor(model => model.Usuario)
                         </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Usuario.Email)
+                            <div class="d-flex align-items-center justify-content-center">@Html.DisplayFor(model => model.Usuario.Email)</div>
                         </dd>
                     </dl>
                     <div class="text-center">
                         <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
-                        <a asp-action="Index" class="btn btn-link">Voltar</a>
+                        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -58,4 +58,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
-
