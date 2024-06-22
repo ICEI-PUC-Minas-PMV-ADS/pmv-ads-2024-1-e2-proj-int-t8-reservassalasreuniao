@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -23,19 +22,19 @@ namespace reserva_sala_reuniao.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Reserva
-                .Include(r => r.Sala)
-                    .ThenInclude(s => s.Localizacao)
-                .Include(r => r.Usuario);
-
-            // Busca a reserva mais próxima
-            var reservaMaisProxima = await _context.Reserva
+            // Busca todas as reservas ordenadas por data de forma descendente 
+            var appDbContext = await _context.Reserva
                 .Include(r => r.Sala)
                     .ThenInclude(s => s.Localizacao)
                 .Include(r => r.Usuario)
+                .OrderByDescending(r => r.Data) // Ordena pela data de forma descendente
+                .ToListAsync();
+
+            // Busca a reserva mais próxima
+            var reservaMaisProxima = appDbContext
                 .Where(r => r.Data >= DateTime.Now)
                 .OrderBy(r => r.Data)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
             // Passa a reserva mais próxima para a view usando ViewBag
             ViewBag.ReservaMaisProxima = reservaMaisProxima;
@@ -46,7 +45,7 @@ namespace reserva_sala_reuniao.Controllers
                 ViewBag.MensagemReserva = "Não há reservas futuras.";
             }
 
-            return View(await appDbContext.ToListAsync());
+            return View(appDbContext);
         }
 
         // GET: Reservas/Details/5
