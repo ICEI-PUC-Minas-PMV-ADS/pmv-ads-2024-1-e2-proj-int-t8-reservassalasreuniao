@@ -93,12 +93,7 @@
                         <a class="nav-link" asp-area="" asp-controller="Relatorios" asp-action="Create">Relatorios</a>
                     </li>
                 }
-                @if (User.IsInRole("Admin"))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="RelatorioTipos" asp-action="Index">Tipos de relatorio</a>
-                    </li>
-                }
+                
             </ul>
         </div>
     </div>
