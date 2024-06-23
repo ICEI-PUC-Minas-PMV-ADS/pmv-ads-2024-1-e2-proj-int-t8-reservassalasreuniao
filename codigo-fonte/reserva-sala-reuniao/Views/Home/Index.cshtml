@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main-container">
-        <div id="calendar">
+        <div class="bg-white card shadow-lg " id="calendar">
             <div id="calendar-header">
                 <button id="prev-month">&lt;</button>
                 <h2 id="month-year"></h2>
@@ -35,9 +35,9 @@
 
         <div class="sidebar">
             <!-- Container para a próxima agenda -->
-            <div class="border rounded p-3 mb-3">
+            <div class="card shadow-lg p-4 mb-5 bg-white rounded">
                 <h2 class="text-center">Próxima reunião:</h2>
-              <div class="borded rounded p-3 ">
+              <div class="borded rounded p-4 ">
                 @if (ViewBag.ReservaMaisProxima != null)
                 {
                     <div>
@@ -55,11 +55,11 @@
             </div>
 
             <!-- Container para o atalho para fazer reserva -->
-            <div class="border rounded p-3">
-                <h2 class="text-center">Faça sua reserva</h2>
+            <div class=" p-4">
+                
                 <div class="text-center">
                     <a class="navbar-brand" href="/Reservas">
-                        <button class="btn btn-primary">Reservar sala</button>
+                        <button class="btn btn-secondary">Fazer uma nova reserva</button>
                     </a>
                 </div>
             </div>

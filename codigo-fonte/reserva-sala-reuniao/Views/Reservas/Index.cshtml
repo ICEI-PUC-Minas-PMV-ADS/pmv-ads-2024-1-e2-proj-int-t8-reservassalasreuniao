@@ -14,7 +14,7 @@
 
                     @if (reservaMaisProxima != null)
                     {
-                        <div class="card mb-4 align-items-center" style="background-color: #808080; color: #000;">
+                        <div class="card mb-4 align-items-center" style="background-color: #D3D3D3 ; color: #000;">
                             <h4 class="alert-heading">Próxima Reserva</h4>
                             <p><strong>Descrição:</strong> @reservaMaisProxima.Descricao</p>
                             <p><strong>Data:</strong> @reservaMaisProxima.Data</p>
@@ -58,9 +58,9 @@
                                         <td class="text-center">@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">Exibir</a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Apagar</a>
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
                                             </div>
                                         </td>
                                     </tr>
