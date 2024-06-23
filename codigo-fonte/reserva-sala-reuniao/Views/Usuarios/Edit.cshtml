@@ -1,49 +1,54 @@
-﻿@model IEnumerable<reserva_sala_reuniao.Models.Usuario>
+﻿@model reserva_sala_reuniao.Models.Usuario
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Edit";
 }
 
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-10">
-            <div class="card shadow-lg p-4 mb-5 bg-white rounded">
-                <div class="card-body">
-                    <h1 class="text-center">Usuários</h1>
-                    <div class="text-center mb-3">
-                        <a asp-action="Create" class="btn btn-primary">Adicionar novo usuário</a>
-                    </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(model => model.Nome)</th>
-                                <th>@Html.DisplayNameFor(model => model.Email)</th>
-                                <th>Setor</th>
-                                <th>Cargo</th>
-                                <th>@Html.DisplayNameFor(model => model.Perfil)</th>
-                                <th class="text-end">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                    <td>@(item.Setor != null ? item.Setor.Nome : "")</td>
-                                    <td>@(item.Cargo != null ? item.Cargo.Nome : "")</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Perfil)</td>
-                                    <td class="text-end">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+<h2>Edit</h2>
+
+<h4>Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Senha" class="control-label"></label>
+                <input asp-for="Senha" class="form-control" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SetorId" class="control-label"></label>
+                <select asp-for="SetorId" class="form-control" asp-items="ViewBag.SetorId"></select>
+                <span asp-validation-for="SetorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CargoId" class="control-label"></label>
+                <select asp-for="CargoId" class="form-control" asp-items="ViewBag.CargoId"></select>
+                <span asp-validation-for="CargoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Perfil" class="control-label"></label>
+                <input asp-for="Perfil" class="form-control" />
+                <span asp-validation-for="Perfil" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
 </div>
