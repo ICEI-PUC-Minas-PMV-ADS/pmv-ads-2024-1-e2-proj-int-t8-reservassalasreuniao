@@ -7,14 +7,14 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-lg-10">
             <div class="card shadow-lg p-4 mb-5 bg-white rounded">
                 <div class="card-body">
                     <h1 class="text-center">Reservar Sala</h1>
 
                     @if (reservaMaisProxima != null)
                     {
-                        <div class="card mb-4 align-items-center" style="background-color: #D3D3D3 ; color: #000;">
+                        <div class="card mb-4 text-center" style="background-color: #D3D3D3; color: #000;">
                             <h4 class="alert-heading">Próxima Reserva</h4>
                             <p><strong>Descrição:</strong> @reservaMaisProxima.Descricao</p>
                             <p><strong>Data:</strong> @reservaMaisProxima.Data</p>
@@ -25,7 +25,7 @@
                     }
                     else
                     {
-                        <div class="card mb-4 align-items-center" style="background-color: #808080; color: #000;">
+                        <div class="card mb-4 text-center" style="background-color: #808080; color: #000;">
                             <h4 class="alert-heading">Próxima Reserva</h4>
                             <p>Não há reservas futuras.</p>
                         </div>
@@ -39,11 +39,11 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center">@Html.DisplayNameFor(model => model.Descricao)</th>
-                                    <th class="text-center">@Html.DisplayNameFor(model => model.Data)</th>
-                                    <th class="text-center">@Html.DisplayNameFor(model => model.HorasReservadas)</th>
-                                    <th class="text-center">@Html.DisplayNameFor(model => model.Sala.Localizacao.Nome)</th>
-                                    <th class="text-center">@Html.DisplayNameFor(model => model.Usuario.Email)</th>
+                                    <th>Descrição</th>
+                                    <th>Data</th>
+                                    <th>Horas Reservadas</th>
+                                    <th>Sala</th>
+                                    <th>Usuário</th>
                                     <th class="text-center">Opções</th>
                                 </tr>
                             </thead>
@@ -51,11 +51,11 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td class="text-center">@Html.DisplayFor(modelItem => item.Descricao)</td>
-                                        <td class="text-center">@Html.DisplayFor(modelItem => item.Data)</td>
-                                        <td class="text-center">@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
-                                        <td class="text-center">@Html.DisplayFor(modelItem => item.Sala.Localizacao.Nome)</td>
-                                        <td class="text-center">@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Sala.Localizacao.Nome)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
                                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
