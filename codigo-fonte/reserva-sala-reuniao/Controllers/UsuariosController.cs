@@ -10,6 +10,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using reserva_sala_reuniao.Models.ViewModel;
 
 namespace reserva_sala_reuniao.Controllers
 {
@@ -27,7 +28,27 @@ namespace reserva_sala_reuniao.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuario.ToListAsync());
+            var listaUsuario = await _context.Usuario.ToListAsync();
+            var listaSetor = await _context.Setor.ToListAsync();
+            var listaCargo = await _context.Cargos.ToListAsync();
+
+            var viewModelUsuario =
+                from usuario in listaUsuario
+                join setor in listaSetor
+                on usuario.SetorId equals setor.Id
+                join cargo in listaCargo
+                on usuario.CargoId equals cargo.Id
+                select new UsuarioViewModel
+                {
+                    NomeCargo = cargo.Nome,
+                    Perfil = usuario.Perfil,
+                    NomeSetor = setor.Nome,
+                    Nome = usuario.Nome,
+                    Email = usuario.Email,
+                    Id = usuario.Id,
+                };
+
+            return View(viewModelUsuario);
         }
 
         [AllowAnonymous]
@@ -98,23 +119,46 @@ namespace reserva_sala_reuniao.Controllers
         }
 
         // GET: Usuarios/Create
-        public IActionResult Create()
+        [HttpGet]
+        public async Task<IActionResult> Create(long? id)
         {
             ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "Nome");
             ViewData["SetorId"] = new SelectList(_context.Setor, "Id", "Nome");
-            return View();
+
+            if (id == null)
+                return View(new Usuario());
+
+            else
+                return View(await _context.Usuario.FirstAsync(x => x.Id == id));
         }
 
         // POST: Usuarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Senha,SetorId,CargoId,Perfil")] Usuario usuario)
+        public async Task<IActionResult> Create(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            var usuarioCadastrado = await _context.Usuario.FirstOrDefaultAsync(x => x.Id == usuario!.Id);
+
+            if (usuarioCadastrado != null && !string.IsNullOrEmpty(usuario.Nome) && !string.IsNullOrEmpty(usuario.Email))
+            {
+                usuarioCadastrado.Email = usuario.Email;
+                usuarioCadastrado.SetorId = usuario.SetorId;
+                usuarioCadastrado.CargoId = usuario.CargoId;
+                usuarioCadastrado.Nome = usuario.Nome;
+                usuarioCadastrado.Perfil = usuario.Perfil;
+
+                _context.Update(usuarioCadastrado);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            else if (ModelState.IsValid && usuarioCadastrado == null)
             {
                 usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
-                _context.Add(usuario);
+                await _context.AddAsync(usuario);
+
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CargoId"] = new SelectList(_context.Cargos, "Id", "Nome", usuario.CargoId);
@@ -130,7 +174,8 @@ namespace reserva_sala_reuniao.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario = await _context.Usuario.FirstOrDefaultAsync(x => x.Id == id);
+
             if (usuario == null)
             {
                 return NotFound();
@@ -217,4 +262,3 @@ namespace reserva_sala_reuniao.Controllers
         }
     }
 }
-
