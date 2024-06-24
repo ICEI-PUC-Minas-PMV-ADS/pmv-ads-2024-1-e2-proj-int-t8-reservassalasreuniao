@@ -5,22 +5,29 @@
     var reservaMaisProxima = ViewBag.ReservaMaisProxima as reserva_sala_reuniao.Models.Reserva;
 }
 
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-10">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
             <div class="card shadow-lg p-4 mb-5 bg-white rounded">
                 <div class="card-body">
                     <h1 class="text-center">Reservar Sala</h1>
 
                     @if (reservaMaisProxima != null)
                     {
-                        <div class="card mb-4 align-items-center" style="background-color: #808080; color: #000;">
+                        <div class="card mb-4 text-center" style="background-color: #D3D3D3; color: #000;">
                             <h4 class="alert-heading">Próxima Reserva</h4>
                             <p><strong>Descrição:</strong> @reservaMaisProxima.Descricao</p>
                             <p><strong>Data:</strong> @reservaMaisProxima.Data</p>
                             <p><strong>Horas Reservadas:</strong> @reservaMaisProxima.HorasReservadas</p>
-                            <p><strong>Sala:</strong> @reservaMaisProxima.Sala.Id</p>
+                            <p><strong>Sala:</strong> @reservaMaisProxima.Sala.Localizacao.Nome</p>
                             <p><strong>Usuário:</strong> @reservaMaisProxima.Usuario.Email</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card mb-4 text-center" style="background-color: #808080; color: #000;">
+                            <h4 class="alert-heading">Próxima Reserva</h4>
+                            <p>Não há reservas futuras.</p>
                         </div>
                     }
 
@@ -28,35 +35,39 @@
                         <a asp-action="Create" class="btn btn-primary">Criar nova reserva</a>
                     </div>
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(model => model.Descricao)</th>
-                                <th>@Html.DisplayNameFor(model => model.Data)</th>
-                                <th>@Html.DisplayNameFor(model => model.HorasReservadas)</th>
-                                <th>@Html.DisplayNameFor(model => model.Sala)</th>
-                                <th>@Html.DisplayNameFor(model => model.Usuario)</th>
-                                <th class="text-end">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Data)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Sala.Id)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
-                                    <td class="text-end">
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
-                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
-                                    </td>
+                                    <th>Descrição</th>
+                                    <th>Data</th>
+                                    <th>Horas Reservadas</th>
+                                    <th>Sala</th>
+                                    <th>Usuário</th>
+                                    <th class="text-center">Opções</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Data)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.HorasReservadas)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Sala.Localizacao.Nome)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Usuario.Email)</td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Editar</a>
+                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Exibir</a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Apagar</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

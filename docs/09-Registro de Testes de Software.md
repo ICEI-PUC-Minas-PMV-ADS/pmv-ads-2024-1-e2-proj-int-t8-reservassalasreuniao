@@ -1,22 +1,72 @@
 # Registro de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>, <a href="8-Plano de Testes de Software.md"> Plano de Testes de Software</a>
 
-Para cada caso de teste definido no Plano de Testes de Software, realize o registro das evidências dos testes feitos na aplicação pela equipe, que comprovem que o critério de êxito foi alcançado (ou não!!!). Para isso, utilize uma ferramenta de captura de tela que mostre cada um dos casos de teste definidos (obs.: cada caso de teste deverá possuir um vídeo do tipo _screencast_ para caracterizar uma evidência do referido caso).
+| Caso de teste         | CT-01 – Login com credenciais válidas                            |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| Registro de evidência | [Evidência](./evidencias/teste_de_software/ct_01_2.mp4)                                                                   |
+|                       |                                                                  |
 
-| **Caso de Teste** 	| **CT-01 – Cadastrar perfil** 	|
-|:---:	|:---:	|
-|	Requisito Associado 	| RF-00X - A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que esses consigam criar e gerenciar seu perfil. |
-|Registro de evidência | www.teste.com.br/drive/ct-01 |
+#
 
-| **Caso de Teste** 	| **CT-02 – Realizar login** 	|
-|:---:	|:---:	|
-|	Requisito Associado 	| RF-00Y - A aplicação deve permitir que um usuário previamente cadastrado faça login |
-|Registro de evidência | www.teste.com.br/drive/ct-02 |
+| Caso de teste         | CT-02 – Login com credenciais inválidas                          |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| Registro de evidência | [Evidência](./evidencias/teste_de_software/ct_02_2.mp4)                                                                 |
+|                       |                                                                  |
 
-## Avaliação
+#
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+| Caso de teste         | CT-03 – Login com campos vazios                                  |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-001 - A aplicação deve permitir que o usuário realize o login |
+| Registro de evidência | [Evidência](./evidencias/teste_de_software/ct_03_2.mp4)                                                                 |
+|                       |                                                                  |
 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
+#
+
+| Caso de teste         | CT-04 – Criar usuário administrador                              |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-002, RF-003 - A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários                       |
+| Registro de evidência | [Evidência com erro](./evidencias/teste_de_software/ct_04_error_2.mp4)                                                                 |
+|                       |                                                                  |
+
+#
+
+| Caso de teste         | CT-05 – Criar usuário comum                            |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-002, RF-003 - A aplicação deve permitir criar diferentes tipos de usuários (administrador, comum) e que o administrador adicione novos usuários                       |
+| Registro de evidência | [Evidência com erro](./evidencias/teste_de_software/ct_05_error_2.mp4)                                                                 |
+|                       |                                                                  |
+
+#
+
+| Caso de teste         | CT-06 – Reservar sala para data e horário específicos            |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-008, RF-009 - A aplicação deve permitir que todos os usuários possam reservar uma sala de reunião no dia, semana ou mês e não deve permitir reserva em horário já ocupado|
+| Registro de evidência |  [Evidência](./evidencias/teste_de_software/ct_06.mp4)                                                                |
+|                       |                                                                  |
+
+#
+
+| Caso de teste         | CT-07 – Tentativa de reserva em horário ocupado                  |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-009 - A aplicação não deve permitir que um usuário reserve uma sala em um horário já ocupado                                                                         |
+| Registro de evidência | [Evidência com erro](./evidencias/teste_de_software/ct_07_error.mp4)                                                                 |
+|                       |                                                                  |
+
+#
+
+| Caso de teste         | CT-08 – Emitir relatório do sistema                              |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-010, RF-011, RF-012 - A aplicação deve permitir que o usuário "administrador" emita relatórios do sistema, e deve possuir relatórios de utilização da sala e dos usuários|
+| Registro de evidência | [Evidência](./evidencias/teste_de_software/ct_08.mp4)                                                                |
+|                       |                                                                  |
+
+#
+
+| Caso de teste         | CT-09 – Cancelar reserva                                         |
+|-----------------------|------------------------------------------------------------------|
+| Requisito Associado   | RF-013 - A aplicação permite que o usuário cancele suas reservas |
+| Registro de evidência | [Evidência](./evidencias/teste_de_software/ct_09.mp4)                                                               |
+|                       |                                                                  |

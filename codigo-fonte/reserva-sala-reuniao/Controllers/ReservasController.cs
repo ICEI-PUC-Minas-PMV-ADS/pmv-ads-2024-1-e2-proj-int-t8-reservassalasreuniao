@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -23,18 +22,30 @@ namespace reserva_sala_reuniao.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Reserva.Include(r => r.Sala).Include(r => r.Usuario);
+            // Busca todas as reservas ordenadas por data de forma descendente 
+            var appDbContext = await _context.Reserva
+                .Include(r => r.Sala)
+                    .ThenInclude(s => s.Localizacao)
+                .Include(r => r.Usuario)
+                .OrderByDescending(r => r.Data) // Ordena pela data de forma descendente
+                .ToListAsync();
 
             // Busca a reserva mais próxima
-            var reservaMaisProxima = await _context.Reserva
+            var reservaMaisProxima = appDbContext
                 .Where(r => r.Data >= DateTime.Now)
                 .OrderBy(r => r.Data)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
 
             // Passa a reserva mais próxima para a view usando ViewBag
             ViewBag.ReservaMaisProxima = reservaMaisProxima;
 
-            return View(await appDbContext.ToListAsync());
+            // Define a mensagem quando não houver reservas futuras
+            if (reservaMaisProxima == null)
+            {
+                ViewBag.MensagemReserva = "Não há reservas futuras.";
+            }
+
+            return View(appDbContext);
         }
 
         // GET: Reservas/Details/5
@@ -47,6 +58,7 @@ namespace reserva_sala_reuniao.Controllers
 
             var reserva = await _context.Reserva
                 .Include(r => r.Sala)
+                    .ThenInclude(s => s.Localizacao)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)
@@ -60,8 +72,8 @@ namespace reserva_sala_reuniao.Controllers
         // GET: Reservas/Create
         public IActionResult Create()
         {
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome");
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome");
+            ViewData["SalaId"] = new SelectList(_context.Sala.Include(s => s.Localizacao), "Id", "Localizacao.Nome");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Nome");
             return View();
         }
 
@@ -76,8 +88,8 @@ namespace reserva_sala_reuniao.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>().Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Nome", reserva.UsuarioId);
+            ViewData["SalaId"] = new SelectList(_context.Sala.Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Nome", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -94,8 +106,8 @@ namespace reserva_sala_reuniao.Controllers
             {
                 return NotFound();
             }
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id", reserva.SalaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email", reserva.UsuarioId);
+            ViewData["SalaId"] = new SelectList(_context.Sala.Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Nome", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -129,8 +141,8 @@ namespace reserva_sala_reuniao.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaId"] = new SelectList(_context.Set<Sala>(), "Id", "Id", reserva.SalaId);
-            ViewData["UsuarioId"] = new SelectList(_context.Set<Usuario>(), "Id", "Email", reserva.UsuarioId);
+            ViewData["SalaId"] = new SelectList(_context.Sala.Include(s => s.Localizacao), "Id", "Localizacao.Nome", reserva.SalaId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Nome", reserva.UsuarioId);
             return View(reserva);
         }
 
@@ -144,6 +156,7 @@ namespace reserva_sala_reuniao.Controllers
 
             var reserva = await _context.Reserva
                 .Include(r => r.Sala)
+                    .ThenInclude(s => s.Localizacao)
                 .Include(r => r.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (reserva == null)

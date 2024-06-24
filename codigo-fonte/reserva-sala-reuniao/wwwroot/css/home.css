@@ -1,4 +1,9 @@
-﻿
+﻿.main-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 450px; 
+}
 
 #calendar {
     width: 300px;

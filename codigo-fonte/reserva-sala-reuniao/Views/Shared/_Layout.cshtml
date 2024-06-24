@@ -12,78 +12,17 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/Home">
-                    <img src="/images/logo_mm.png" alt="Logo" style="height: 55px;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+               
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                    Menu
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Menu
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                                        </li>
-                                    }
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
-                                    </li>
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Cargos" asp-action="Index">Cargos</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Localizacoes" asp-action="Index">Localizacao</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Setores" asp-action="Index">Setor</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="Relatorios" asp-action="Create">Relatorios</a>
-                                        </li>
-                                    }
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link" asp-area="" asp-controller="RelatorioTipos" asp-action="Index">Tipos de relatorio</a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        </ul>
-                    }
+                <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
+                                Olá, @User.Identity.Name
+                                <a class="btn btn-light text-dark ms-2" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
                             </li>
                         }
                         else
@@ -102,7 +41,64 @@
             </div>
         </nav>
     </header>
-    <main role="main" class="flex-fill pb-3">
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">
+                        Home
+                    </a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Cargos" asp-action="Index">Cargos</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Salas" asp-action="Index">Salas</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Localizacoes" asp-action="Index">Localizacao</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Setores" asp-action="Index">Setor</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Relatorios" asp-action="Create">Relatorios</a>
+                    </li>
+                }
+                
+            </ul>
+        </div>
+    </div>
+
+    <main class="flex-fill p-3">
         @RenderBody()
     </main>
     <footer class="border-top footer text-muted text-center mt-auto">

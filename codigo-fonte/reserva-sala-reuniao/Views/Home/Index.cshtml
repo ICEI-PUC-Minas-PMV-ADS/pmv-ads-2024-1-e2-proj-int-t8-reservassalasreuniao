@@ -2,7 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,45 +9,70 @@
     <link rel="stylesheet" href="~/css/home.css">
 </head>
 <body>
-    <div id="calendar">
-        <div id="calendar-header">
-            <button id="prev-month">&lt;</button>
-            <h2 id="month-year"></h2>
-            <button id="next-month">&gt;</button>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <!-- Calendário -->
+            <div class="col-lg-5 mb-4">
+                <div class="bg-white card shadow-lg" id="calendar">
+                    <div id="calendar-header" class="text-center">
+                        <button id="prev-month">&lt;</button>
+                        <h2 id="month-year"></h2>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                    <table id="calendar-body" class="table">
+                        <thead>
+                            <tr>
+                                <th>Dom</th>
+                                <th>Seg</th>
+                                <th>Ter</th>
+                                <th>Qua</th>
+                                <th>Qui</th>
+                                <th>Sex</th>
+                                <th>Sáb</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <!-- Próxima reunião -->
+                    <div class="bg-white card shadow-lg mb-4">
+                        <div class="card-body">
+                            <h2 class="text-center">Próxima reunião:</h2>
+                            <div class="border rounded p-3">
+                                @if (ViewBag.ReservaMaisProxima != null)
+                                {
+                                    <div>
+                                        <h3>@ViewBag.ReservaMaisProxima.Descricao</h3>
+                                        <p>Data: @ViewBag.ReservaMaisProxima.Data.ToString("dd/MM/yyyy HH:mm")</p>
+                                        <p>Localização: @ViewBag.ReservaMaisProxima.Sala.Localizacao.Nome</p>
+                                        <p>Usuário: @ViewBag.ReservaMaisProxima.Usuario.Nome</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <p>@ViewBag.MensagemReserva</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão para fazer reserva -->
+                    <div class="bg-white card shadow-lg">
+                        <div class="card-body text-center">
+                            <a class="navbar-brand" href="/Reservas">
+                                <button class="btn btn-secondary">Fazer uma nova reserva</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table id="calendar-body">
-            <thead>
-                <tr>
-                    <th>Dom</th>
-                    <th>Seg</th>
-                    <th>Ter</th>
-                    <th>Qua</th>
-                    <th>Qui</th>
-                    <th>Sex</th>
-                    <th>Sáb</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
     </div>
     <script src="~/js/home.js"></script>
 </body>
-
-
-<div class="col-md-6">
-    <!-- Container para a próxima agenda -->
-    <div class="border rounded p-3 mb-3">
-        <h2 class="text-center">Próxima Agenda</h2>
-        <!-- Conteúdo da próxima agenda aqui -->
-    </div>
-    <!-- Container para o atalho para fazer reserva -->
-    <div class="border rounded p-3">
-        <h2 class="text-center">Atalho para Fazer Reserva</h2>
-        <div class="text-center">
-            <a class="navbar-brand" href="/Reservas">
-                <button class="btn btn-primary">Fazer Reserva</button>
-            </a>
-        </div>
-    </div>
-</div>
