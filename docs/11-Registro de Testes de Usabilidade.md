@@ -81,4 +81,7 @@ Nao implementado
 Nao implementado
 
 Segue abaixo um video apresentando o projeto:
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao/assets/145510428/f19bebbb-4dd2-4807-b4c1-c10f1ab59ce3
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao/assets/145510428/6f0eebea-711e-4b92-8146-60f49895ff5a
+
