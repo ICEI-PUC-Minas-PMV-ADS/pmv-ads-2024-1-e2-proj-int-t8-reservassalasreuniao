@@ -79,3 +79,6 @@ Nao implementado
 
 ### Tarefa 9: Excluir um perfil
 Nao implementado
+
+Segue abaixo um video apresentando o projeto:
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao/assets/145510428/f19bebbb-4dd2-4807-b4c1-c10f1ab59ce3

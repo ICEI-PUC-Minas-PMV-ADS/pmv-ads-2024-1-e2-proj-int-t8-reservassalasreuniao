@@ -22,5 +22,5 @@ Os testes de usabilidade serão realizados com um grupo de participantes que rep
 | *Cadastro e edição de perfis de acesso* | Testar a facilidade de criar, editar, listar e excluir contas de acesso/perfil. | - Quantidade de etapas para cadastro e edição.<br>- Facilidade de navegação.<br>- Conformidade com heurísticas de consistência e padrões. | Registros de interações, questionários. | Avaliar a intuitividade do processo e identificar inconsistências. | Simplificar o processo de cadastro, usar linguagem clara, e manter consistência visual. |
 
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e2-proj-int-t8-reservassalasreuniao/assets/145510428/ec50ed64-d447-4442-99d0-4947f7391e74
+
 
